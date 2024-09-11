@@ -1,3 +1,8 @@
+$(document).ready(()=> {
+    $('#carousel').slick({
+        autoplay: true,
+        arrows: false
+    })
 $('#telefone').mascara('(00) 00000-0000', {
     placeholder: '(DDD) 12345-6789'
 })
@@ -10,33 +15,36 @@ $('#cep').mascara('00000-000', {
     placeholder: '012345-678'
 })
 
-$('form').validate({
+$('#form').validate({
     rules: {
         nome: {
-            requerido: true
+            required: true
         },
         email: {
-            requerido: true,
+            required: true,
             email: true
         },
         telefone: {
-            requerido: true
+            required: true
         },
         endereco: {
-            requerido: true
+            required: true
         },
         cep: {
-            requerido: true
+            required: true
         },
         cpf: {
-            requerido: true
+            required: true
         },
+    submitHandler: function(form){
+        alert('Ola')
     },
-    submitHandler: function (form) {
-        alert("Sua requisição foi enviada para análise, parabéns pela aquisição!");
-        form.reset();
-    },
-    invalidHandler: function (form, validator) {
-        alert("Por favor, preencha os campos para prosseguir com a compra!");
+    invalidHandler: function(evento, validador){
+        let camposIncorretos = validador.numberOfInvalids();
+        if (camposIncorretos) {
+            alert(`Existem ${camposIncorretos} campos incorretos.`)
+        }
+        
     }
-})
+}})
+});
