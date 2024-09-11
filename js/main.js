@@ -3,15 +3,15 @@ $(document).ready(()=> {
         autoplay: true,
         arrows: false
     })
-$('#telefone').mascara('(00) 00000-0000', {
+$('#telefone').mask('(00) 00000-0000', {
     placeholder: '(DDD) 12345-6789'
 })
 
-$('#cpf').mascara('000.000.000-00', {
+$('#cpf').mask('000.000.000-00', {
     placeholder: '123.456.789-00'
 })
 
-$('#cep').mascara('00000-000', {
+$('#cep').mask('00000-000', {
     placeholder: '012345-678'
 })
 
@@ -36,6 +36,7 @@ $('#form').validate({
         cpf: {
             required: true
         },
+    },
     submitHandler: function(form){
         alert('Ola')
     },
@@ -43,8 +44,8 @@ $('#form').validate({
         let camposIncorretos = validador.numberOfInvalids();
         if (camposIncorretos) {
             alert(`Existem ${camposIncorretos} campos incorretos.`)
-        }
-        
-    }
-}})
+            }
+        },
+    
+})
 });
